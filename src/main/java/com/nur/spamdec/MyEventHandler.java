@@ -1,9 +1,7 @@
-package com.example.examplemod;
+package com.nur.spamdec;
 
 import java.util.ArrayList;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -62,15 +60,19 @@ public class MyEventHandler {
 	@SubscribeEvent
     public void onOtherChat(ClientChatReceivedEvent event)
     {
-		if(event.message.getUnformattedText().contains(":")&&event.message.getUnformattedText().contains("[")&&event.message.getUnformattedText().contains("]")) {
-			if(event.message.getUnformattedText().contains("»")) {
-				list.add(new Msg(event.message.getUnformattedText().substring(0,event.message.getUnformattedText().indexOf(":")+1)+"[item]",System.currentTimeMillis()));
+		String msg = event.message.getUnformattedText();
+		if(msg.contains(": /msg")||msg.contains(": /w")||msg.contains(": /r")||msg.contains(": /mail")||msg.contains(": /m")||msg.contains(": /t")||msg.contains(": /whisper")||msg.contains(": /emsg")||msg.contains(": /tell")||msg.contains(": /er")||msg.contains(": /reply")||msg.contains(": /ereply")||msg.contains(": /email")||msg.contains(": /action")||msg.contains(": /describe")||msg.contains(": /eme")||msg.contains(": /eaction")||msg.contains(": /edescribe")||msg.contains(": /etell")||msg.contains(": /ewhisper")||msg.contains(": /pm")) {
+			return;
+		}
+		if(msg.contains(":")&&msg.contains("[")&&msg.contains("]")) {
+			if(msg.contains("»")) {
+				list.add(new Msg(msg.substring(0,msg.indexOf(":")+1)+"[item]",System.currentTimeMillis()));
 			} else {
-				list.add(new Msg(event.message.getUnformattedText(),System.currentTimeMillis()));
+				list.add(new Msg(msg,System.currentTimeMillis()));
 			}
 			if(checkSpam(list)) {
 				//Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(""+EnumChatFormatting.DARK_RED+EnumChatFormatting.BOLD+"(!) POSSIBLE SPAM BELOW (!)"));
-			};
+			}
 		}
     }
 }

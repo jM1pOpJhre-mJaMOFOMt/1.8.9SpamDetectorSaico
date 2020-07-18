@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.nur.spamdec;
 
 
 import org.lwjgl.input.Keyboard;
