@@ -14,7 +14,6 @@ public class Main
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	Keybinds.register();
     	MinecraftForge.EVENT_BUS.register(new MyEventHandler());
     }
 }

@@ -61,7 +61,7 @@ public class MyEventHandler {
     public void onOtherChat(ClientChatReceivedEvent event)
     {
 		String msg = event.message.getUnformattedText();
-		if(msg.contains(": /msg")||msg.contains(": /w")||msg.contains(": /r")||msg.contains(": /mail")||msg.contains(": /m")||msg.contains(": /t")||msg.contains(": /whisper")||msg.contains(": /emsg")||msg.contains(": /tell")||msg.contains(": /er")||msg.contains(": /reply")||msg.contains(": /ereply")||msg.contains(": /email")||msg.contains(": /action")||msg.contains(": /describe")||msg.contains(": /eme")||msg.contains(": /eaction")||msg.contains(": /edescribe")||msg.contains(": /etell")||msg.contains(": /ewhisper")||msg.contains(": /pm")) {
+		if(msg.contains("<SC>")||msg.contains("VL")||msg.contains(": /msg")||msg.contains(": /w")||msg.contains(": /r")||msg.contains(": /mail")||msg.contains(": /m")||msg.contains(": /t")||msg.contains(": /whisper")||msg.contains(": /emsg")||msg.contains(": /tell")||msg.contains(": /er")||msg.contains(": /reply")||msg.contains(": /ereply")||msg.contains(": /email")||msg.contains(": /action")||msg.contains(": /describe")||msg.contains(": /eme")||msg.contains(": /eaction")||msg.contains(": /edescribe")||msg.contains(": /etell")||msg.contains(": /ewhisper")||msg.contains(": /pm")) {
 			return;
 		}
 		if(msg.contains(":")&&msg.contains("[")&&msg.contains("]")) {
