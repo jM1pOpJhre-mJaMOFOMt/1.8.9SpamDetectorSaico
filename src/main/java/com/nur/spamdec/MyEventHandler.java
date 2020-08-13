@@ -61,7 +61,7 @@ public class MyEventHandler {
     public void onOtherChat(ClientChatReceivedEvent event)
     {
 		String msg = event.message.getUnformattedText();
-		if(msg.contains("<SC>")||msg.contains("VL")||msg.contains(": /msg")||msg.contains(": /w")||msg.contains(": /r")||msg.contains(": /mail")||msg.contains(": /m")||msg.contains(": /t")||msg.contains(": /whisper")||msg.contains(": /emsg")||msg.contains(": /tell")||msg.contains(": /er")||msg.contains(": /reply")||msg.contains(": /ereply")||msg.contains(": /email")||msg.contains(": /action")||msg.contains(": /describe")||msg.contains(": /eme")||msg.contains(": /eaction")||msg.contains(": /edescribe")||msg.contains(": /etell")||msg.contains(": /ewhisper")||msg.contains(": /pm")) {
+		if(msg.contains("<SC>")||msg.contains("VL")||msg.toLowerCase().contains(": /msg")||msg.toLowerCase().contains(": /w")||msg.toLowerCase().contains(": /r")||msg.toLowerCase().contains(": /mail")||msg.toLowerCase().contains(": /m")||msg.toLowerCase().contains(": /t")||msg.toLowerCase().contains(": /whisper")||msg.toLowerCase().contains(": /emsg")||msg.toLowerCase().contains(": /tell")||msg.toLowerCase().contains(": /er")||msg.toLowerCase().contains(": /reply")||msg.toLowerCase().contains(": /ereply")||msg.toLowerCase().contains(": /email")||msg.toLowerCase().contains(": /action")||msg.toLowerCase().contains(": /describe")||msg.toLowerCase().contains(": /eme")||msg.toLowerCase().contains(": /eaction")||msg.toLowerCase().contains(": /edescribe")||msg.toLowerCase().contains(": /etell")||msg.toLowerCase().contains(": /ewhisper")||msg.toLowerCase().contains(": /pm")) {
 			return;
 		}
 		if(msg.contains(":")&&msg.contains("[")&&msg.contains("]")) {
