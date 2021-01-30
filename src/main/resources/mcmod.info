@@ -1,6 +1,6 @@
 [
 {
-  "modid": "SpamDec",
+  "modid": "spamdec",
   "name": "SaiCo Spam Detector",
   "description": "Detects 3 messages in 20 seconds.",
   "version": "${version}",

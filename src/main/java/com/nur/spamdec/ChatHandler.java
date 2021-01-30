@@ -5,22 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class MyEventHandler {
+public class ChatHandler {
 	ArrayList<Msg> list = new ArrayList<Msg>();
-	class Msg {
-		private String mmessage;
-		private long mtimestamp;
-		public Msg(String message, long l) {
-			mmessage=message;
-			mtimestamp=l;
-		}
-		public String getMessage() {
-			return mmessage;
-		}
-		public long getTimestamp() {
-			return mtimestamp;
-		}
-	}
 	int countOccurrences(ArrayList<Msg> Clist, String Cmsg) 
     { 
         int res = 0;
@@ -70,9 +56,7 @@ public class MyEventHandler {
 			} else {
 				list.add(new Msg(msg,System.currentTimeMillis()));
 			}
-			if(checkSpam(list)) {
-				//Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(""+EnumChatFormatting.DARK_RED+EnumChatFormatting.BOLD+"(!) POSSIBLE SPAM BELOW (!)"));
-			}
+			checkSpam(list);//Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(""+EnumChatFormatting.DARK_RED+EnumChatFormatting.BOLD+"(!) POSSIBLE SPAM BELOW (!)"));
 		}
     }
 }
