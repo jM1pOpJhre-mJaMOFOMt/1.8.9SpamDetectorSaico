@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ChatHandler {
     ArrayList<Message> list = new ArrayList<Message>();
 
-    int countOccurrences(ArrayList<Message> Clist, String Cmsg) {
+    public int countOccurrences(ArrayList<Message> Clist, String Cmsg) {
         int res = 0;
         for (int i = 0; i < Clist.size(); i++) {
             if (Cmsg.equalsIgnoreCase((Clist.get(i).getMessage())) && (Clist.get(i).getTimestamp() + 20000) >= System.currentTimeMillis()) {
@@ -21,7 +21,7 @@ public class ChatHandler {
         return res;
     }
 
-    int firstOccurrenceOf(ArrayList<Message> Clist, String Cmsg) {
+    public int firstOccurrenceOf(ArrayList<Message> Clist, String Cmsg) {
         int first = -1;
         for (int counter = 0; counter < Clist.size(); counter++) {
             if (Clist.get(counter).getMessage().equalsIgnoreCase(Cmsg)) {
@@ -32,7 +32,7 @@ public class ChatHandler {
         return first;
     }
 
-    boolean checkSpam(ArrayList<Message> Clist) {
+    public boolean checkSpam(ArrayList<Message> Clist) {
         boolean spam = false;
         for (int counter = 0; counter < Clist.size(); counter++) {
             Message msg = Clist.get(counter);
@@ -40,7 +40,6 @@ public class ChatHandler {
                 list.remove(firstOccurrenceOf(list, msg.getMessage()));
                 spam = true;
             }
-            ;
         }
         if (spam) {
             Minecraft.getMinecraft().thePlayer.playSound("random.anvil_land", 0.5F, 1.0F);
