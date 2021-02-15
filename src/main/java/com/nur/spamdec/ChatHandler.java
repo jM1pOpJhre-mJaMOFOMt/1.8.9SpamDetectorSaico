@@ -7,9 +7,9 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatHandler {
-    ArrayList<Msg> list = new ArrayList<Msg>();
+    ArrayList<Message> list = new ArrayList<Message>();
 
-    int countOccurrences(ArrayList<Msg> Clist, String Cmsg) {
+    int countOccurrences(ArrayList<Message> Clist, String Cmsg) {
         int res = 0;
         for (int i = 0; i < Clist.size(); i++) {
             if (Cmsg.equalsIgnoreCase((Clist.get(i).getMessage())) && (Clist.get(i).getTimestamp() + 20000) >= System.currentTimeMillis()) {
@@ -21,7 +21,7 @@ public class ChatHandler {
         return res;
     }
 
-    int firstOccurrenceOf(ArrayList<Msg> Clist, String Cmsg) {
+    int firstOccurrenceOf(ArrayList<Message> Clist, String Cmsg) {
         int first = -1;
         for (int counter = 0; counter < Clist.size(); counter++) {
             if (Clist.get(counter).getMessage().equalsIgnoreCase(Cmsg)) {
@@ -32,10 +32,10 @@ public class ChatHandler {
         return first;
     }
 
-    boolean checkSpam(ArrayList<Msg> Clist) {
+    boolean checkSpam(ArrayList<Message> Clist) {
         boolean spam = false;
         for (int counter = 0; counter < Clist.size(); counter++) {
-            Msg msg = Clist.get(counter);
+            Message msg = Clist.get(counter);
             if (countOccurrences(Clist, msg.getMessage()) >= 3) {
                 list.remove(firstOccurrenceOf(list, msg.getMessage()));
                 spam = true;
@@ -56,9 +56,9 @@ public class ChatHandler {
         }
         if (msg.contains(":") && msg.contains("[") && msg.contains("]")) {
             if (msg.contains("»")) {
-                list.add(new Msg(msg.substring(0, msg.indexOf(":") + 1) + "[item]", System.currentTimeMillis()));
+                list.add(new Message(msg.substring(0, msg.indexOf(":") + 1) + "[item]", System.currentTimeMillis()));
             } else {
-                list.add(new Msg(msg, System.currentTimeMillis()));
+                list.add(new Message(msg, System.currentTimeMillis()));
             }
             checkSpam(list);//Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(""+EnumChatFormatting.DARK_RED+EnumChatFormatting.BOLD+"(!) POSSIBLE SPAM BELOW (!)"));
         }
