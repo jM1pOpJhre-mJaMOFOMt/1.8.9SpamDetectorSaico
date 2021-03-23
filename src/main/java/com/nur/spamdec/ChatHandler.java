@@ -7,14 +7,15 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatHandler {
-    ArrayList<Message> list = new ArrayList<Message>();
+    public static final ArrayList<Message> list = new ArrayList<Message>();
+    public int delay = 10;
 
     public int countOccurrences(ArrayList<Message> Clist, String Cmsg) {
         int res = 0;
         for (int i = 0; i < Clist.size(); i++) {
-            if (Cmsg.equalsIgnoreCase((Clist.get(i).getMessage())) && (Clist.get(i).getTimestamp() + 20000) >= System.currentTimeMillis()) {
+            if (Cmsg.equalsIgnoreCase((Clist.get(i).getMessage())) && Clist.get(i).getTimestamp() + delay * 1000 >= System.currentTimeMillis()) {
                 res++;
-            } else if ((Clist.get(i).getTimestamp() + 20000) < System.currentTimeMillis()) {
+            } else if (Clist.get(i).getTimestamp() + delay * 1000 < System.currentTimeMillis()) {
                 Clist.remove(firstOccurrenceOf(list, Clist.get(i).getMessage()));
             }
         }
